@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'main_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -64,6 +65,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
+        'DIRS': ['./templates',],
+        'APP_DIRS': True,
     },
 ]
 
@@ -86,7 +89,7 @@ DATABASES = {
         'NAME': 'yrsh',
         'USER': 'postgreadmin',
         'PASSWORD': '4321',
-        'HOST': '10.54.65.58',
+        'HOST': '10.54.65.99',
         'PORT': '5432',
     }
 }
@@ -117,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -126,8 +129,14 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.0/howto/static-files/
-
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+LOGIN_REDIRECT_URL = '/' # Перебрасывает на главную при авторизации
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # !!!!!!!!!!!!!!!!!!!!!!! необходим сервер для почты
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]

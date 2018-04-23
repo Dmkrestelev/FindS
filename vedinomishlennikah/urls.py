@@ -17,8 +17,17 @@ Including another URLconf
 from django.urls import path
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
+from django.views.generic import RedirectView
+from django.contrib.auth.views import login, password_reset, password_reset_confirm, password_reset_done, password_reset_complete
+
 
 urlpatterns = [
-    url(r'^projectone/', include('projectone.urls')),
+    url(r'^user/', include('user.urls')),
     url(r'^admin/', admin.site.urls),
+    path('main_app/', include('main_app.urls')), # чтобы перенаправить запросы с корневового URL, на URL приложения
+    url(r'^$', RedirectView.as_view(url='/main_app/', permanent=True)),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
 ]
+
