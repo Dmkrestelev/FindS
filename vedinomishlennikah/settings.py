@@ -36,6 +36,7 @@ EXTERNAL_APPS = (
 
 INTERNAL_APPS = (
     'main_app',
+    'event',
     'user',
 )
 

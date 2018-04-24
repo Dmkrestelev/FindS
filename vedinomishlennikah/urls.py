@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^user/', include('user.urls')),
     url(r'^admin/', admin.site.urls),
     path('main_app/', include('main_app.urls')), # чтобы перенаправить запросы с корневового URL, на URL приложения
+    # path('event/', include('event.urls')), # чтобы перенаправить запросы с корневового URL, на URL приложения
     url(r'^$', RedirectView.as_view(url='/main_app/', permanent=True)),
     url(r'^accounts/', include('django.contrib.auth.urls')),
 ]
