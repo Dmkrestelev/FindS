@@ -36,14 +36,11 @@ EXTERNAL_APPS = (
 
 INTERNAL_APPS = (
     'main_app',
-<<<<<<< HEAD
     'event',
-=======
     'user',
 )
 
 DJANGO_APPS = (
->>>>>>> 7939c0c58cf685ccdb3bed316a8f431ac4bbe12a
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
