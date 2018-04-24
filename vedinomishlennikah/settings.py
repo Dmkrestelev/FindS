@@ -30,15 +30,26 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+EXTERNAL_APPS = (
+    # внешние библиотеки
+)
+
+INTERNAL_APPS = (
     'main_app',
+    'user',
+)
+
+DJANGO_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
+)
+
+INSTALLED_APPS = EXTERNAL_APPS + INTERNAL_APPS + DJANGO_APPS
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -86,10 +97,10 @@ WSGI_APPLICATION = 'vedinomishlennikah.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'yrsh',
+        'NAME': 'test',
         'USER': 'postgreadmin',
         'PASSWORD': '4321',
-        'HOST': '10.54.65.99',
+        'HOST': '10.54.65.10',
         'PORT': '5432',
     }
 }
@@ -135,8 +146,14 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/' # Перебрасывает на главную при авторизации
 
 
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+)
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # !!!!!!!!!!!!!!!!!!!!!!! необходим сервер для почты
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+AUTH_USER_MODEL = 'user.User'
